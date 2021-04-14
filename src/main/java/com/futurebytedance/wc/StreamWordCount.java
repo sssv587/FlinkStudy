@@ -17,6 +17,8 @@ public class StreamWordCount {
         // 创建流处理执行环境
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         env.setParallelism(8);
+        //不合并前后算子  one-to-one/分区数一样
+        //env.disableOperatorChaining();
 
         // 从文件中读取
 //        String inputPath = "C:\\Users\\10926\\IdeaProjects\\FlinkStudy\\src\\main\\resources\\hello.txt";
@@ -31,9 +33,14 @@ public class StreamWordCount {
         DataStreamSource<String> inputDataStream = env.socketTextStream(host, port);
 
         // 基于数据流进行转换计算
-        SingleOutputStreamOperator<Tuple2<String, Integer>> resultStream = inputDataStream.flatMap(new WordCount.MyFlatMapper())
+        SingleOutputStreamOperator<Tuple2<String, Integer>> resultStream = inputDataStream
+                .flatMap(new WordCount.MyFlatMapper()).slotSharingGroup("grep")
                 .keyBy(0)
-                .sum(1);
+                .sum(1)
+                .setParallelism(2).slotSharingGroup("red");
+        //开始新的任务链
+        //.startNewChain();
+        //.disableChaining();
 
         resultStream.print();
 
