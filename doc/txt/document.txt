@@ -1,0 +1,39 @@
+Flink部署
+  - Flink的安装和配置
+  - 资源的分配和并行度设置
+  - Job的提交运行
+  - 命令行提交Job
+  - Yarn和K8S平台的部署
+Flink运行时架构
+  - Flink的四大组件 JobManager、TaskManager、ResourceManager、Dispatcher
+  - 作业提交流程-抽象架构
+  - Yarn上作业的提交流程
+  - 作业调度原理及思考问题
+  - slot和任务调度
+  - slot和并行度的关系
+  - 程序结构和数据流图
+  - 数据传输和任务链
+Flink流处理API
+  - 创建运行时环境
+  - source
+     - 从集合读取数据
+     - 从文件中读取数据
+     - 从kafka中读取数据
+     - 自定义数据源
+  - transform
+     - 简单算子
+     - 滚动聚合
+
+
+解决了flink报错的问题
+mvn clean install -U
+
+-- 提交job
+bin/flink run -c com.futurebytedance.wc.StreamWordCount -p 3 jars/FlinkStudy-1.0-SNAPSHOT.jar --host localhost --port 7777
+
+-- 展示flink任务
+./bin/flink list
+-- 取消flink任务
+.bin/flink cancel ${job-id}
+-- 展示flink任务状态
+.bin/flink -a
