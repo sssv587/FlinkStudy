@@ -19,6 +19,7 @@ import org.apache.flink.streaming.api.windowing.assigners.TumblingProcessingTime
 import org.apache.flink.streaming.api.windowing.time.Time;
 import org.apache.flink.streaming.api.windowing.windows.TimeWindow;
 import org.apache.flink.util.Collector;
+import org.apache.flink.util.OutputTag;
 
 /**
  * @author yuhang.sun
@@ -87,8 +88,23 @@ public class Window01_TimeWindow {
                     }
                 });
 
+        //3.其他可选API
+        OutputTag<SensorReading> outputTag = new OutputTag<SensorReading>("late") {
+        };
+
+        SingleOutputStreamOperator<SensorReading> sumStream = dataStream.keyBy("id")
+                .timeWindow(Time.seconds(15))
+//                .trigger()
+//                .evictor()
+                .allowedLateness(Time.minutes(1))
+                .sideOutputLateData(outputTag)
+                .sum("temperature");
+
+        sumStream.getSideOutput(outputTag).print("late");
+
         resultStream.print();
         resultStream2.print();
+
 
         env.execute();
     }
