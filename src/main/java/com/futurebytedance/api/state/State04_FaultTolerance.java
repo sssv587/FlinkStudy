@@ -13,7 +13,7 @@ import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
  * @author yuhang.sun
  * @version 1.0
  * @date 2021/4/26 - 0:27
- * @Description
+ * @Description FlinkAPI-状态管理-状态后端
  */
 public class State04_FaultTolerance {
     public static void main(String[] args) throws Exception {
