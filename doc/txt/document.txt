@@ -23,7 +23,41 @@ Flink流处理API
   - transform
      - 简单算子
      - 滚动聚合
-
+Flink理论-Watermark
+  -
+  - Watermark设定原则
+    -- 数据稠密
+       -- 周期性生成Watermark
+    -- 数据稀疏
+       -- 间断性生成Watermark
+Flink状态管理(Flink中的状态、算子状态、键控状态、状态后端)
+    -- 状态定义
+    -- 算子状态
+       -- Operator State 算子状态的作用范围仅限为算子任务
+          -- 列表状态
+          -- 联合列表状态
+          -- 广播状态
+       -- Keyed State 根据输入流中定义的键(key)来访问和维护
+          -- 值状态(Value State)
+          -- 列表状态(List State)
+          -- 映射状态(Map State)
+          -- 聚合状态(Reducing State & Aggregating State)
+    -- 键控状态
+    -- 状态管理(状态后端)
+       -- MemoryStateBackend
+       -- FsStateBackend
+       -- RocksDBStateBackend
+Flink_ProcessFunction
+    -- 整体介绍和分类
+    -- keyedProcessFunction
+    -- 侧输出流
+Flink容错机制
+    -- 检查点概念
+    -- 从检查点做故障恢复
+    -- 检查点算法和Barrier
+    -- 检查点具体算法
+    -- 保存点(savepoint)
+    -- 检查点和重启策略配置
 
 解决了flink报错的问题
 mvn clean install -U
