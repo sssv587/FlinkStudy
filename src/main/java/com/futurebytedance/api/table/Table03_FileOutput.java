@@ -63,8 +63,8 @@ public class Table03_FileOutput {
                 )
                 .createTemporaryTable("outputTable");
 
-//        resultTable.insertInto("outputTable");
-        aggTable.insertInto("outputTable");
+        resultTable.insertInto("outputTable");
+//        aggTable.insertInto("outputTable"); // 会报错，写入文件系统不支持聚合判断
 
         env.execute();
     }
