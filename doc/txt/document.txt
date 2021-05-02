@@ -58,6 +58,12 @@ Flink容错机制
     -- 检查点具体算法
     -- 保存点(savepoint)
     -- 检查点和重启策略配置
+Flink状态一致性
+    -- 一致性概念和分类
+    -- 端到端的一致性
+    -- 幂等写入
+    -- 预写日志和两阶段提交
+    -- Flink和Kafka连接保证一致性
 
 解决了flink报错的问题
 mvn clean install -U
