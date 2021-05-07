@@ -16,7 +16,7 @@ import org.apache.flink.util.Collector;
  * @author yuhang.sun
  * @version 1.0
  * @date 2021/5/2 - 15:20
- * @Description
+ * @Description 表聚合函数(Table-Aggregate-Function)
  */
 public class UDF04_TableAggregateFunction {
     public static void main(String[] args) throws Exception {
