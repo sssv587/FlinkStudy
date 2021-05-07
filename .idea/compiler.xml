@@ -9,5 +9,8 @@
         <module name="FlinkStudy" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="UserBehaviorAnalysis" target="8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
